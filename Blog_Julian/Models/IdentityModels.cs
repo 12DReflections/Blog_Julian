@@ -29,5 +29,7 @@ namespace Blog_Julian.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Blog_Julian.Models.Blog> Blogs { get; set; }
     }
 }
