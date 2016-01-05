@@ -15,29 +15,24 @@ namespace Blog_Julian.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Blogs
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View(db.Blogs.ToList());
         }
-
+        
         // GET: Blogs/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Blog blog = db.Blogs.Find(id);
-            if (blog == null)
-            {
+            if (blog == null) {
                 return HttpNotFound();
             }
             return View(blog);
         }
 
         // GET: Blogs/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             return View();
         }
 
@@ -46,10 +41,8 @@ namespace Blog_Julian.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,PostDate,BlogPost")] Blog blog)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "ID,Title,PostDate,BlogPost")] Blog blog) {
+            if (ModelState.IsValid) {
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,15 +52,12 @@ namespace Blog_Julian.Controllers
         }
 
         // GET: Blogs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Blog blog = db.Blogs.Find(id);
-            if (blog == null)
-            {
+            if (blog == null)  {
                 return HttpNotFound();
             }
             return View(blog);
@@ -78,10 +68,8 @@ namespace Blog_Julian.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,PostDate,BlogPost")] Blog blog)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "ID,Title,PostDate,BlogPost")] Blog blog) {
+            if (ModelState.IsValid) {
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
