@@ -22,7 +22,7 @@ namespace Blog_Julian.Models
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
-        {
+        {fff
         }
 
         public static ApplicationDbContext Create()
