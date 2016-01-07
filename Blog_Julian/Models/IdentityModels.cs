@@ -22,14 +22,12 @@ namespace Blog_Julian.Models
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
-        {fff
+        {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Blog_Julian.Models.Blog> Blogs { get; set; }
     }
 }
